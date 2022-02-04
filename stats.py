@@ -27,21 +27,21 @@ def tiragedef (f) :
         U = rdm.uniform(0,1)
     return Y
 
-    
 
-T = np.linspace(0,2,100)
-NBvals = np.zeros(100)
-for k in range(100):
+nbtirages = 10**6
+cases = 100
+T = np.linspace(0,2,cases)
+NBvals = np.zeros(cases)
+for k in range(nbtirages):
     x = tiragedef(f)
-    case = int(x/0.02)
+    case = int(x/2*cases)
     NBvals[case] = NBvals[case] + 1
 
+
+NBvals = (NBvals * cases) /2 / nbtirages
 plt.ion()
 plt.figure()
 plt.clf()
 plt.plot(T,NBvals)
 
 plt.show()
-
-
-
